@@ -1,9 +1,5 @@
 {
-<<<<<<< HEAD
   "name": "netflix-prep-repo",
-=======
-  "name": "edu-bank-tests",
->>>>>>> ac8ca0e (First commit)
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {},
@@ -12,16 +8,11 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
-<<<<<<< HEAD
     "@playwright/test": "^1.54.1",
     "@types/node": "^24.1.0"
   },
   "dependencies": {
     "node.js": "^0.0.1-security",
     "npm": "^11.5.1"
-=======
-    "@playwright/test": "^1.53.2",
-    "@types/node": "^24.0.10"
->>>>>>> ac8ca0e (First commit)
   }
 }
