@@ -6,7 +6,6 @@ test.describe('tudum navigation tests', () => {
 test('Open tudum page as unlogged user', async ({ page }) => {
 
     await page.goto('https://www.netflix.com/tudum');
-    await page.getByRole('button', { name: 'Reject' }).click();
     await page.getByLabel('Main Menu').getByRole('link', { name: 'Home' }).click();
     await page.getByText('Spotlight').click();
     await page.getByText('Latest News').click();
