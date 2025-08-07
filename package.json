@@ -2,7 +2,10 @@
   "name": "netflix-prep-repo",
   "version": "1.0.0",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test": "npx playwright test",
+    "test:smoke": "npx playwright --grep \"@smoke\""
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
