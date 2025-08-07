@@ -1,5 +1,6 @@
 import { Locator, Page } from "@playwright/test";
 import { MainMenu } from "../components/main-menu.component";
+import { UserMenu } from "../components/user-menu.component";
 export class HomePage {
   categoryHeroSection: Locator;
   homeFeedTopStoriesSection: Locator;
@@ -11,6 +12,7 @@ export class HomePage {
   videosSectionHeader: Locator;
 
   mainMenu: MainMenu;
+  userMenu: UserMenu;
   constructor(private page: Page) {
     this.categoryHeroSection = page.locator('[data-guid="category-hero"]');
     this.homeFeedTopStoriesSection = page.locator(

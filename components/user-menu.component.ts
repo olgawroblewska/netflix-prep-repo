@@ -11,13 +11,16 @@ export class UserMenu {
     this.goToNetflixLink = page.locator('[data-uia="netflix-link"]');
     this.signOutOfNetflixLink = page.locator('[data-uia="signout"]');
   }
+  async clickSwitchProfile(): Promise<void>{
+    await this.profileDropDownButton.click();
+  }
   async isUserLoggedIn(): Promise<boolean> {
     return await this.profileDropDownButton.isVisible();
   }
-  async goToProfiles() {
+  async goToProfiles(): Promise<void> {
     await this.profileDropDownButton.click();
   }
-  async signOutOfNetflix() {
+  async signOutOfNetflix(): Promise<void> {
     await this.signOutOfNetflixLink.click();
   }
 }

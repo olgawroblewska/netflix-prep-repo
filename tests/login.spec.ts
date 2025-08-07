@@ -4,23 +4,39 @@ import { SignInPage } from "../pages/sign-in.page";
 import { UserMenu } from "../components/user-menu.component";
 
 test.describe("Login tests ", () => {
+    let mainMenu: MainMenu;
+    let signInPage: SignInPage;
   
     test.beforeEach( async ({ page }) => {
         await page.goto("/");
+        
+        
+        mainMenu = new MainMenu(page);
+        await mainMenu.signInClick();
+        signInPage = new SignInPage(page);
     })
     test("Successfull login", async ({ page }) => {
 
     // Arrange
-    const login = '';
-    const password = '';
+    const login = 'olga.wroblewska@proton.me';
+    const password = '!';
     // Act
-    const mainMenu = new MainMenu(page);
-    await mainMenu.signInClick();
-    const signIn = new SignInPage(page);
-    await signIn.loginToNetflix(login, password);
+    await signInPage.loginToNetflix(login, password);
     // Assert
     const userMenu = new UserMenu(page);
-    await expect(userMenu.isUserLoggedIn).toBeTruthy();
+    await expect(userMenu.isUserLoggedIn()).resolves.toBeTruthy();
+    console.log(await userMenu.isUserLoggedIn());
 
   });
+
+  test("Incorrect login", async ({ page }) => {
+    //Arrange
+    const incorrectLogin = 'asdasd';
+    const password = 'RandomPassword';
+    //Act
+    await signInPage.loginToNetflix(incorrectLogin, password);
+    //Assert
+
+    
+  })
 });

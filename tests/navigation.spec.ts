@@ -1,15 +1,18 @@
 import { test, expect } from "@playwright/test";
 import { MainMenu } from "../components/main-menu.component";
 import { CookieBanner } from "../components/cookie-banner.component";
+import { HomePage } from "../pages/home.page";
 
 test.describe("tudum navigation tests", () => {
   let mainMenu: MainMenu;
   let cookieBanner: CookieBanner;
+  let homePage: HomePage;
 
   test.beforeEach(async ({ page }) => {
     await page.goto("/");
     mainMenu = new MainMenu(page);
     cookieBanner = new CookieBanner(page);
+    homePage = new HomePage(page);
   });
 
   test.only("Navigation - home page - unlogged user", async ({ page }) => {
@@ -23,4 +26,8 @@ test.describe("tudum navigation tests", () => {
     // Assert 
 
     });
+
+  test("Navigation Top10 - unlogged user", async ({page}) => {
+    
+  })
   });

@@ -1,4 +1,5 @@
 import { Locator, Page } from "@playwright/test";
+import { UserMenu } from "./user-menu.component";
 
 export class MainMenu {
   signInButton: Locator;
@@ -13,6 +14,7 @@ export class MainMenu {
   shopNavLink: Locator;
   searchButton: Locator;
 
+  userMenu: UserMenu;
   constructor(private page: Page) {
     this.signInButton = page.getByRole("button", { name: "Sign In" });
     this.homeButton = page.locator('[data-uia="home-button"]');
@@ -36,7 +38,9 @@ export class MainMenu {
   }
 
   async signInToTudum() {
-    this.signInClick();
-    
+    await this.signInClick();
+  }
+  async isUserSignedIn(): Promise<boolean>{
+    return await this.userMenu.profileDropDownButton.isVisible();
   }
 }

@@ -23,5 +23,4 @@ async loginToNetflix(username: string, password: string): Promise<void> {
     await this.passwordInput.fill(password);
     await this.loginButton.click();
 }
-async 
 }
