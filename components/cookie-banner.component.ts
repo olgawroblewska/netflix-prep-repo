@@ -13,13 +13,13 @@ export class CookieBanner {
         this.acceptButton = this.page.getByRole('button', {name: 'Accept'});
         this.closeButton = this.page.getByRole('button', {name: 'Close'});
     }
-async clickAcceptCookiesButton(page) {
+async clickAcceptCookiesButton() {
     await this.acceptButton.click();
 }
-async clickRejectCookiesButton(page) {
+async clickRejectCookiesButton() {
     await this.rejectButton.click();
 }
-async closeCookieBanner(page) {
+async closeCookieBanner() {
     await this.closeButton.click();
 }
 }
