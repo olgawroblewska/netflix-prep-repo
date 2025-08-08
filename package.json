@@ -4,7 +4,8 @@
   "main": "index.js",
   "scripts": {
     "test": "npx playwright test",
-    "test:smoke": "npx playwright --grep \"@smoke\""
+    "test:smoke": "npx playwright --grep \"@smoke\"",
+    "test:unit": "npx vitest -t=\"@unit\""
   },
   "keywords": [],
   "author": "",
@@ -12,7 +13,10 @@
   "description": "",
   "devDependencies": {
     "@playwright/test": "^1.54.1",
-    "@types/node": "^24.1.0"
+    "@types/node": "^24.1.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.2",
+    "vitest": "^3.2.4"
   },
   "dependencies": {
     "node.js": "^0.0.1-security",

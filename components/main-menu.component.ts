@@ -16,17 +16,17 @@ export class MainMenu {
 
   userMenu: UserMenu;
   constructor(private page: Page) {
-    this.signInButton = page.getByRole("button", { name: "Sign In" });
-    this.homeButton = page.locator('[data-uia="home-button"]');
-    this.homeNavLink = page.getByRole("link", { name: "Home" });
-    this.top10NavLink = page.getByRole("link", { name: "Top 10" });
-    this.trendingNavLink = page.getByRole("link", { name: "Trending" });
-    this.whatToWatchNavLink = page.getByRole("link", { name: "What to Watch" });
-    this.showsNavLink = page.getByRole("link", { name: "Shows" });
-    this.moviesNavLink = page.getByRole("link", { name: "Movies" });
-    this.podcastsNavLink = page.getByRole("link", { name: "Podcasts" });
-    this.shopNavLink = page.getByRole("link", { name: "Shop" });
-    this.searchButton = page.locator('[data-uia="search-button"]');
+    this.signInButton = this.page.locator('[data-uia="profile-link"]');
+    this.homeButton = this.page.locator('[data-uia="home-button"]');
+    this.homeNavLink = this.page.getByLabel('Main Menu').getByRole('link', { name: 'Home' });
+    this.top10NavLink = this.page.getByRole('link', { name: 'Top 10', exact: true });
+    this.trendingNavLink = this.page.getByRole("link", { name: "Trending" });
+    this.whatToWatchNavLink = this.page.getByRole("link", { name: "What to Watch" });
+    this.showsNavLink = this.page.getByRole('link', { name: 'Shows', exact: true });
+    this.moviesNavLink = this.page.getByRole("link", { name: "Movies" , exact: true});
+    this.podcastsNavLink = this.page.getByLabel('Main Menu').getByRole('link', { name: 'Podcasts' });
+    this.shopNavLink = this.page.getByRole("link", { name: "Shop", exact: true });
+    this.searchButton = this.page.getByRole('button', { name: 'Search' });
   }
 
   async signInClick() {
@@ -40,7 +40,7 @@ export class MainMenu {
   async signInToTudum() {
     await this.signInClick();
   }
-  async isUserSignedIn(): Promise<boolean>{
+  async isUserSignedIn(): Promise<boolean> {
     return await this.userMenu.profileDropDownButton.isVisible();
   }
 }

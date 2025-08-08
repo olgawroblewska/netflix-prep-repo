@@ -15,24 +15,27 @@ export class Top10 {
 
   mainMenu: MainMenu;
   constructor(private page: Page) {
-    this.selectCountryDropdownList = this.page.locator(
-      '[data-uia="top10-country-select"]'
-    );
-    this.selectCategoryDropdownList = this.page.locator(
-      '[data-uia="top10-category-select-selected"]'
-    );
+    this.selectCountryDropdownList = this.page
+      .getByRole("combobox")
+      .filter({ hasText: "Global" });
+    this.selectCategoryDropdownList = this.page
+      .getByRole("combobox")
+      .filter({ hasText: "Movies | English" });
     this.downloadButton = this.page.getByRole("button", { name: "Downloads" });
-    this.globalTop10MoviesSection = this.page.locator(
-      '[data-uia="top-10-cards"]'
-    );
-    this.globalTop10MoviesHeader = this.page.getByRole("heading", {
-      name: "Global Top 10 Movies",
-    });
+    this.globalTop10MoviesSection = this.page
+      .locator("section")
+      .filter({ hasText: "7/28/25 - 8/3/25 7/28/25 - 8/" });
+    // this.globalTop10MoviesHeader = this.page.getByRole("heading", {
+    //   name: "Global Top 10 Movies",
+    // });
+    this.globalTop10MoviesHeader = this.page.getByText("Global Top 10 Movies");
     this.top10FiltersWeekDropdownList = this.page.locator(
       'data-uia="top10-filters-week-select-selected"]'
     );
-    this.top10MoviesOverviewHeader = this.page.getByRole('heading', {name: 'Top 10 Movies overview'});
-    this.top10MoviesOverviewSection = this.page.getByTestId('top10-table');
+    this.top10MoviesOverviewHeader = this.page.getByRole("heading", {
+      name: "Top 10 Movies overview",
+    });
+    this.top10MoviesOverviewSection = this.page.getByTestId("top10-table");
   }
   async downloadTop10Movies(): Promise<void> {
     await this.downloadButton.click();
