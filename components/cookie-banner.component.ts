@@ -1,21 +1,25 @@
 import { Locator, Page } from "@playwright/test";
 
 export class CookieBanner {
-    cookieBanner: Locator;
+    cookieBannerPopup: Locator;
     learnMoreButton: Locator;
     rejectButton: Locator;
     acceptButton: Locator;
+    closeButton: Locator;
     constructor(private page: Page) {
-        this.cookieBanner = page.locator('');
-        this.learnMoreButton = page.getByTestId('#onetrust-pc-btn-handler');
-        this.rejectButton = page.getByTestId('#onetrust-reject-all-handler');
-        this.acceptButton = page.getByTestId('#onetrust-accept-btn-handler');
+        this.cookieBannerPopup = this.page.getByLabel('Privacy', { exact: true }).locator('div').filter({ hasText: 'Netflix and third parties use' }).nth(1);
+        this.learnMoreButton = this.page.getByRole('button', { name: 'Learn more, Opens the' });
+        this.rejectButton = this.page.getByRole('button', {name: 'Reject'});
+        this.acceptButton = this.page.getByRole('button', {name: 'Accept'});
+        this.closeButton = this.page.getByRole('button', {name: 'Close'});
     }
-
 async clickAcceptCookiesButton(page) {
-    await page.acceptButton.click();
+    await this.acceptButton.click();
 }
 async clickRejectCookiesButton(page) {
-    await page.rejectButton.click();
+    await this.rejectButton.click();
+}
+async closeCookieBanner(page) {
+    await this.closeButton.click();
 }
 }

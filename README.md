@@ -41,9 +41,11 @@
   test("test description", async ({ page }) => {});
   ```
 - describe:
-
   ```javascript
   test.describe("Group description", () => {});
   ```
-
+- describe:
+  ```javascript
+  test.beforeEach( async ({ page }) => {});
+  ```
 - running one test: `test.only`
