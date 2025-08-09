@@ -18,5 +18,14 @@ async backToTop(): Promise<void> {
 };
 async goToAboutTudum(): Promise<void> {
     await this.aboutTudumLink.click();
+};
+async goToNetflixHousePage(): Promise<void> {
+    await this.netflixHouseLink.click();
+};
+async goToNetflixShopPage(): Promise<void> {
+    await this.netflixShopLink.click();
+};
+async goToPodcastsPage(): Promise<void> {
+    await this.podcastsLink.click();
 }
 }

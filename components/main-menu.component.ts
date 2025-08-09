@@ -1,7 +1,7 @@
 import { Locator, Page } from "@playwright/test";
 import { UserMenu } from "./user-menu.component";
 
-export class MainMenu {
+export class MainMenu { 
   signInButton: Locator;
   homeButton: Locator;
   homeNavLink: Locator;
@@ -15,13 +15,14 @@ export class MainMenu {
   searchButton: Locator;
 
   userMenu: UserMenu;
+
   constructor(private page: Page) {
     this.signInButton = this.page.locator('[data-uia="profile-link"]');
     this.homeButton = this.page.locator('[data-uia="home-button"]');
     this.homeNavLink = this.page.getByLabel('Main Menu').getByRole('link', { name: 'Home' });
     this.top10NavLink = this.page.getByRole('link', { name: 'Top 10', exact: true });
     this.trendingNavLink = this.page.getByRole("link", { name: "Trending" });
-    this.whatToWatchNavLink = this.page.getByRole("link", { name: "What to Watch" });
+    this.whatToWatchNavLink = this.page.getByRole("link", { name: "What to Watch", exact: true });
     this.showsNavLink = this.page.getByRole('link', { name: 'Shows', exact: true });
     this.moviesNavLink = this.page.getByRole("link", { name: "Movies" , exact: true});
     this.podcastsNavLink = this.page.getByLabel('Main Menu').getByRole('link', { name: 'Podcasts' });
@@ -29,18 +30,30 @@ export class MainMenu {
     this.searchButton = this.page.getByRole('button', { name: 'Search' });
   }
 
-  async signInClick() {
+  async signInClick(): Promise<void> {
     await this.signInButton.click();
   }
 
-  async goHome() {
-    await this.homeButton.click();
+  async goTo(locator: Locator) {
+    await locator.click();
   }
 
-  async signInToTudum() {
+  async signInToTudum(): Promise<void> {
     await this.signInClick();
   }
   async isUserSignedIn(): Promise<boolean> {
     return await this.userMenu.profileDropDownButton.isVisible();
   }
+  async goToTop10Page(): Promise<void> {
+    await this.top10NavLink.click();
+  }
+  async goToTrendingPage(): Promise<void>{
+    await this.trendingNavLink.click();
+  }
+  async goToWhatToWatchPage(): Promise<void>{
+    await this.whatToWatchNavLink.click();
+  }
+  async goToShowsPage(): Promise<void>{
+    await this.showsNavLink.click();
+  } 
 }

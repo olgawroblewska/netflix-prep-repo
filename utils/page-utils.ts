@@ -1,23 +1,32 @@
-import { Page } from '@playwright/test';
+import { Page } from "@playwright/test";
 
 /**
- * Scrolls the page to the very bottom 
+ * Scrolls the page to the very bottom
  */
 export async function scrollToPageBottom(page: Page): Promise<void> {
   await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
-};
+}
 
 // no ending scrolling
-export async function scrollToBottomUntilNoChange(page: Page, wait = 500): Promise<void> {
-    let previousHeight = 0;
-    while (true) {
-      const currentHeight = await page.evaluate(() => {
-        window.scrollBy(0, window.innerHeight);
-        return document.body.scrollHeight;
-      });
-  
-      if (currentHeight === previousHeight) break;
-      previousHeight = currentHeight;
-      await page.waitForTimeout(wait);
-    }
+export async function scrollToBottomUntilNoChange(
+  page: Page,
+  wait = 500
+): Promise<void> {
+  let previousHeight = 0;
+  while (true) {
+    const currentHeight = await page.evaluate(() => {
+      window.scrollBy(0, window.innerHeight);
+      return document.body.scrollHeight;
+    });
+
+    if (currentHeight === previousHeight) break;
+    previousHeight = currentHeight;
+    await page.waitForTimeout(wait);
   }
+}
+
+// check if user is at the top of the page
+export async function isAtTop(page: Page): Promise<boolean> {
+  return await page.evaluate(() =>
+    (document.scrollingElement ?? document.documentElement).scrollTop === 0)
+}
