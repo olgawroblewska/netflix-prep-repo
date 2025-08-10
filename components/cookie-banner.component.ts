@@ -14,12 +14,18 @@ export class CookieBanner {
         this.closeButton = this.page.getByRole('button', {name: 'Close'});
     }
 async clickAcceptCookiesButton() {
-    await this.acceptButton.click();
+    if (await this.acceptButton.isVisible()) {
+        await this.acceptButton.click();
+    } 
 }
 async clickRejectCookiesButton() {
-    await this.rejectButton.click();
+    if (await this.rejectButton.isVisible()){
+        await this.rejectButton.click();
+    }
 }
 async closeCookieBanner() {
-    await this.closeButton.click();
+    if (await this.closeButton.isVisible()) {  
+        await this.closeButton.click();
+    }
 }
 }
