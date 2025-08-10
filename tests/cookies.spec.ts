@@ -4,7 +4,7 @@ import { CookieBanner } from "../components/cookie-banner.component";
 test.describe("Testing cookies banner actions", () => {
   let cookieBanner: CookieBanner;
   test.beforeEach(async ({ page }) => {
-    page.goto("/");
+    await page.goto("/");
     cookieBanner = new CookieBanner(page);
   });
   test("User accepts cookies", async ({ page }) => {
