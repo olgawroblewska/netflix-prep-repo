@@ -14,7 +14,7 @@ test.describe("tudum navigation tests", () => {
     mainMenu = new MainMenu(page);
     cookieBanner = new CookieBanner(page);
     homePage = new HomePage(page);
-    await cookieBanner.closeCookieBanner();
+    await cookieBanner.clickButtonOnCookieBanner(cookieBanner.closeButton);
   });
 
   test("Open tudum should be at home page", async ({ page }) => {

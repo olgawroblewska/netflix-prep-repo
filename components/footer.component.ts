@@ -13,19 +13,23 @@ export class Footer {
         this.netflixShopLink = this.page.getByRole('link', {name: "Netflix Shop"});
         this.podcastsLink = this.page.getByRole('contentinfo').getByRole('link', { name: 'Podcasts' });
     }
-async backToTop(): Promise<void> {
-    await this.backToTopButton.click();
+async goToByClicking(locator: Locator): Promise<void>{
+    await locator.click();
 };
-async goToAboutTudum(): Promise<void> {
-    await this.aboutTudumLink.click();
-};
-async goToNetflixHousePage(): Promise<void> {
-    await this.netflixHouseLink.click();
-};
-async goToNetflixShopPage(): Promise<void> {
-    await this.netflixShopLink.click();
-};
-async goToPodcastsPage(): Promise<void> {
-    await this.podcastsLink.click();
-}
+
+//     async backToTop(): Promise<void> {
+//     await this.backToTopButton.click();
+// };
+// async goToAboutTudum(): Promise<void> {
+//     await this.aboutTudumLink.click();
+// };
+// async goToNetflixHousePage(): Promise<void> {
+//     await this.netflixHouseLink.click();
+// };
+// async goToNetflixShopPage(): Promise<void> {
+//     await this.netflixShopLink.click();
+// };
+// async goToPodcastsPage(): Promise<void> {
+//     await this.podcastsLink.click();
+// }
 }

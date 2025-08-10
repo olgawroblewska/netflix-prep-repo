@@ -9,19 +9,19 @@ test.describe("Testing cookies banner actions", () => {
   });
   test("User accepts cookies", async ({ page }) => {
     // act
-    await cookieBanner.clickAcceptCookiesButton();
+    await cookieBanner.clickButtonOnCookieBanner(cookieBanner.acceptButton);
     //assert
     await expect(cookieBanner.cookieBannerPopup).toBeHidden();
   });
   test("User rejects cookies", async ({ page }) => {
     // act
-    await cookieBanner.clickRejectCookiesButton();
+    await cookieBanner.clickButtonOnCookieBanner(cookieBanner.rejectButton);
     //assert
     await expect(cookieBanner.cookieBannerPopup).toBeHidden();
   });
   test("User closing cookie banner", async ({ page }) => {
     //act
-    await cookieBanner.closeCookieBanner();
+    await cookieBanner.clickButtonOnCookieBanner(cookieBanner.closeButton);
     //assert
     await expect(cookieBanner.cookieBannerPopup).toBeHidden();
   })

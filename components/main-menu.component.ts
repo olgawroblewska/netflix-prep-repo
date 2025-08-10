@@ -37,23 +37,4 @@ export class MainMenu {
   async goTo(locator: Locator) {
     await locator.click();
   }
-
-  async signInToTudum(): Promise<void> {
-    await this.signInClick();
-  }
-  async isUserSignedIn(): Promise<boolean> {
-    return await this.userMenu.profileDropDownButton.isVisible();
-  }
-  async goToTop10Page(): Promise<void> {
-    await this.top10NavLink.click();
-  }
-  async goToTrendingPage(): Promise<void>{
-    await this.trendingNavLink.click();
-  }
-  async goToWhatToWatchPage(): Promise<void>{
-    await this.whatToWatchNavLink.click();
-  }
-  async goToShowsPage(): Promise<void>{
-    await this.showsNavLink.click();
-  } 
 }

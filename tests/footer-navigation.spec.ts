@@ -12,14 +12,54 @@ test.describe('Footer navigation testing ', () => {
         await scrollToPageBottom(page);
     });
     test("Back to top page", async ({ page }) => {
-        await footerNavigation.backToTop();
+        await footerNavigation.goToByClicking(footerNavigation.backToTopButton);
         await page.waitForLoadState();
         // assert
        await expect.poll(async () => await isAtTop(page), { timeout: 3000 }).toBe(true);
     });
 
-    test("test description1", async ({ page }) => {});
+    test("Should go to 'About Tudum' page", async ({ page }) => {
+        // Arrange
+        const expectedUrl = 'https://www.netflix.com/tudum/articles/about-tudum';
+        // Act
+        await footerNavigation.goToByClicking(footerNavigation.aboutTudumLink);
+        const currentUrl = page.url();
+        // assert
+        await expect(expectedUrl).toEqual(currentUrl);
+    });
 
-    test("test description2", async ({ page }) => {});
-
+    test("Should open 'Netflix House' page in the new tab", async ({ page }) => {
+        // Arrange
+        const expectedUrl = 'https://www.netflixhouse.com/';
+        // Act
+        const [newPage] = await Promise.all([
+            page.waitForEvent('popup'),
+            footerNavigation.goToByClicking(footerNavigation.netflixHouseLink),
+        ]);
+        const currentUrl = newPage.url();
+        
+        // assert
+        await expect(currentUrl).toEqual(expectedUrl);
+    });
+    test("Should open 'Netflix shop' page in the new tab", async ({page}) => {
+        // arrange
+        const expectedUrl = 'https://www.netflix.shop/en-pl';
+        // act
+        const [newPage] = await Promise.all([
+            page.waitForEvent('popup'),
+            footerNavigation.goToByClicking(footerNavigation.netflixShopLink),
+        ]);
+        const currentUrl = newPage.url();
+        // assert
+        await expect(currentUrl).toEqual(expectedUrl);
+    });
+    test("Should go to 'Podcasts' page", async ({page}) => {
+        // arrange
+        const expectedUrl = 'https://www.netflix.com/tudum/podcasts';
+        // act
+        await footerNavigation.goToByClicking(footerNavigation.podcastsLink);
+        const currentUrl = page.url();
+        // assert
+        await expect(currentUrl).toEqual(expectedUrl);
+    });
 });
