@@ -43,7 +43,7 @@ test.describe('Footer navigation testing ', () => {
     });
     test("Should open 'Netflix shop' page in the new tab", async ({page}) => {
         // arrange
-        const expectedUrl = 'https://www.netflix.shop/en-pl';
+        const expectedUrl = 'https://www.netflix.shop/';
         // act
         const [newPage] = await Promise.all([
             page.waitForEvent('popup'),
