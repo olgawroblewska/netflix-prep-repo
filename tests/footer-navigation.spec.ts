@@ -1,6 +1,6 @@
 import test, { expect } from "@playwright/test";
 import { Footer } from "../components/footer.component";
-import { scrollToPageBottom, isAtTop } from "../utils/page-utils";
+import { scrollToPageBottom, isAtTop } from "../utils/page.util";
 
 test.describe('Footer navigation testing ', () => {
     let footerNavigation: Footer;
