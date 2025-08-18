@@ -1,7 +1,7 @@
 import { Locator, Page } from "@playwright/test";
 import { MainMenu } from "../components/main-menu.component";
 
-export class Top10 {
+export class Top10 { 
   selectCountryDropdownList: Locator;
   selectCategoryDropdownList: Locator;
   downloadButton: Locator;
@@ -37,7 +37,7 @@ export class Top10 {
     });
     this.top10MoviesOverviewSection = this.page.getByTestId("top10-table");
   }
-  async downloadTop10Movies(): Promise<void> {
+  async openDownloadModal(): Promise<void> {
     await this.downloadButton.click();
   }
 }
