@@ -5,7 +5,7 @@ import * as fs from "node:fs/promises";
 import * as path from "node:path";
 import { TIMEOUT } from "node:dns";
 import { CookieBanner } from "../components/cookie-banner.component";
-import { imageSize } from 'image-size';
+import { imageSize } from "image-size";
 
 test.describe("Top 10 page testingdownload images", () => {
   let downloadModal: DownloadModal;
@@ -102,11 +102,9 @@ test.describe("Top 10 page testingdownload images", () => {
     const { width, height } = imageSize(buffer1);
     console.log(`Image size: ${width}x${height}`);
 
-
     // 5. Asercje
     expect(height).toBeGreaterThan(width);
     const stat = await fs.stat(savedPath);
     expect(stat.size).toBeGreaterThan(0);
-
   });
 });
