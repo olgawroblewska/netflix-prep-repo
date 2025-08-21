@@ -8,7 +8,7 @@ test.describe("Netflix house page testing", () => {
   test.beforeEach(async ({ page }) => {
     nh = new NetflixHouse(page);
   });
-  test.only("Should go to intro section", async ({ page }) => {
+  test("Should go to intro section", async ({ page }) => {
     // act
     await page.goto("https://www.netflixhouse.com/");
     //scrollToSection(nh.introSection);
